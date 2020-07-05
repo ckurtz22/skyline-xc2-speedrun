@@ -1,6 +1,6 @@
 # Skyline
-An environment for linking, runtime hooking and code patching in Switch games.
-This fork is a temporary template as an interim until Skyline base and its plugin loading is more mature.
+An environment for linking, runtime hooking and code patching in ~~Super Smash Bros Ultimate~~ Xenoblade DE.
+I'm only using this until I stop being lazy and learn Rust btw
 
 # Contributors
 This project is derived from OdysseyReversed and Starlight
