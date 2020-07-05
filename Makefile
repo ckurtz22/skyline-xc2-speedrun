@@ -11,8 +11,8 @@ endif
 
 NAME 			:= $(shell basename $(CURDIR))
 NAME_LOWER		:= $(shell echo $(NAME) | tr A-Z a-z)
-TID				:= tid-goes-here
-CODE_NAME		:= example
+TID				:= 0100FF500E34A000
+CODE_NAME		:= bfsw
 SUBSDK_NAME		:= subsdk1
 
 SCRIPTS_DIR		:= scripts
