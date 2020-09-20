@@ -1,7 +1,11 @@
 #include "main.hpp"
 
+//#define NOLOG
+
 #include "skyline/logger/TcpLogger.hpp"
 #include "skyline/utils/ipc.hpp"
+#include "xenoblade/bf2.hpp"
+#include "xenoblade/bfsw.hpp"
 
 // For handling exceptions
 char ALIGNA(0x1000) exception_handler_stack[0x4000];
@@ -39,7 +43,7 @@ void skyline_main() {
 
     // init hooking setup
     A64HookInit();
-
+//*
     // initialize logger
     skyline::logger::s_Instance = new skyline::logger::TcpLogger();
     skyline::logger::s_Instance->Log("[skyline_main] Begining initialization.\n");
@@ -80,9 +84,11 @@ void skyline_main() {
 
         // load plugins
         skyline::plugin::Manager::LoadPlugins();
+	    setup_bf2();
     }};
 
     taskQueue->push(new std::unique_ptr<skyline::utils::Task>(after_romfs_task));
+/**/
 
     // TODO: experiment more with NVN
     /*nvnInit(NULL);

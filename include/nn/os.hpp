@@ -21,7 +21,11 @@ namespace os {
         };
     }  // namespace detail
 
-    typedef u64 Tick;
+    // typedef u64 Tick;
+    
+    struct Tick {
+        u64 tick;
+    };
     typedef u64 LightEventType;
 
     // https://github.com/misson20000/nn-types/blob/master/nn_os.h

@@ -49,6 +49,7 @@ if __name__ == "__main__":
     ftp = FTP()
     print(f'Connecting to {consoleIP}... ', end='')
     ftp.connect(consoleIP, FTPD_PORT)
+    ftp.login()
     print('Connected!')
 
     ensuredirectory(ftp, '/atmosphere', 'contents')

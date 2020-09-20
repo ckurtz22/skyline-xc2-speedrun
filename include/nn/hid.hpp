@@ -156,6 +156,7 @@ namespace hid {
         u32 handle;
     };
 
+/*
     struct GestureState {
         s64 updateNum;
         s64 detectionNum;
@@ -188,6 +189,7 @@ namespace hid {
         DirectionState direction;
         u32 attributes;
     };
+*/
 
     void InitializeNpad();
     void SetSupportedNpadIdType(u32 const*, u64);
@@ -198,14 +200,14 @@ namespace hid {
     int GetNpadStates(nn::hid::NpadFullKeyState* outArray, s32 count, u32 const& controllerID);
     void GetNpadState(nn::hid::NpadHandheldState* out, u32 const& controllerID);
     void GetNpadState(nn::hid::NpadFullKeyState* out, u32 const& controllerID);
-    int GetGestureStates(GestureState* outArray, int count);
+    // int GetGestureStates(GestureState* outArray, int count);
     int GetSixAxisSensorHandles(SixAxisSensorHandle* pOutValues, int count, u32 const& controllerID,
                                 NpadStyleSet style);
     void StartSixAxisSensor(const SixAxisSensorHandle& handle);
     void StopSixAxisSensor(const SixAxisSensorHandle& handle);
     bool IsSixAxisSensorAtRest(const SixAxisSensorHandle& handle);
-    void GetSixAxisSensorState(SixAxisSensorState* outValue, const SixAxisSensorHandle& handle);
-    int GetSixAxisSensorStates(SixAxisSensorState* outStates, int count, const SixAxisSensorHandle& handle);
+    // void GetSixAxisSensorState(SixAxisSensorState* outValue, const SixAxisSensorHandle& handle);
+    // int GetSixAxisSensorStates(SixAxisSensorState* outStates, int count, const SixAxisSensorHandle& handle);
     bool IsSixAxisSensorFusionEnabled(const SixAxisSensorHandle& handle);
     void EnableSixAxisSensorFusion(const SixAxisSensorHandle& handle, bool enable);
     void SetGyroscopeZeroDriftMode(const SixAxisSensorHandle& handle, const GyroscopeZeroDriftMode& mode);
