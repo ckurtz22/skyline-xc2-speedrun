@@ -61,25 +61,36 @@ namespace ml {
 
 namespace gf {
     typedef uint64_t GF_OBJ_HANDLE;
-    namespace GfGameManager {
+    typedef uint32_t SAVESLOT;
 
-      // public:
+    class GfGameManager {
+        public:
         bool isBattle();
         void enterBattle(bool);
         gf::GF_OBJ_HANDLE* getPartyLeader();
 
+    }; //class GfGameManager
 
-    }//; //class GfGameManager
 
-
-    namespace GfObjUtil {
-      // public:
+    class GfObjUtil {
+        public:
         uintptr_t getObj(gf::GF_OBJ_HANDLE*);
 
-    }//; //class GfObjUtil
+    }; //class GfObjUtil
 
+    namespace GfReqCommand {
+        void reqAutoSave(gf::SAVESLOT);
+    } //namespace GfReqCommand
 
 } //namespace gf
+
+namespace tl {
+    class TitleMain {
+        public:
+        void returnTitle(gf::SAVESLOT);
+    }; //class TitleMain
+
+} //namespace tl
 
 namespace btl {
     class BattleGlobal {
