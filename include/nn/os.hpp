@@ -22,6 +22,25 @@ namespace os {
     }  // namespace detail
 
     // typedef u64 Tick;
+
+    struct TransferMemoryType {
+        char state;
+        bool handle_managed;
+        bool allocated;
+
+        void *address;
+        size_t size;
+        u32 Handle;
+        u32 buffer[9];
+    };
+
+    typedef u32 MemoryPermission;
+
+    int CreateTransferMemory(nn::os::TransferMemoryType*, void*, unsigned long, nn::os::MemoryPermission);
+
+    int DetachTransferMemory(nn::os::TransferMemoryType*);
+
+    int CloseNativeHandle(unsigned int);
     
     struct Tick {
         u64 tick;
@@ -99,7 +118,7 @@ namespace os {
     Result AllocateAddressRegion(u64*, u64);
     Result AllocateMemory(u64*, u64);
     Result AllocateMemoryPages(u64, u64);
-    void AllocateMemoryBlock(u64*, u64);
+    int AllocateMemoryBlock(u64*, u64);
     void FreeMemoryBlock(u64, u64);
     void SetMemoryHeapSize(u64);
 
@@ -211,6 +230,18 @@ namespace os {
     nn::os::Tick GetSystemTick();
     u64 GetThreadAvailableCoreMask();
     void SetMemoryHeapSize(u64 size);
+
+    struct MemoryInfo {
+        unsigned long TotalMemorySize;
+        unsigned long UsedMemorySize;
+        unsigned long HeapSize;
+        unsigned long unk_0x18;
+        unsigned long unk_0x20;
+        unsigned long unk_0x28;
+        unsigned int unk_30;
+    };
+
+    int QueryMemoryInfo(nn::os::MemoryInfo*);
 
     namespace detail {
         extern s32 g_CommandLineParameter;
