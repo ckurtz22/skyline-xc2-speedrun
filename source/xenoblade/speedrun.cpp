@@ -57,7 +57,7 @@ void setup_speedruns() {
             LOG("Unknown version string: %s", rev_number->string);
         }
     }
-    
+    return;
     u64 sleepTick = 1e9;
     while (true) {
         memDiag();

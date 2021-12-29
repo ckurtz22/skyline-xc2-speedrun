@@ -64,7 +64,7 @@ void logStackTrace() {
 
     void* lr;
     asm("mov %[result], LR" : [ result ] "=r"(lr));
-    LOG("LR is %lx %s", (size_t)lr - skyline::utils::g_MainTextAddr + TEXT_OFFSET, getSymbol((uintptr_t)lr).data());
+    LOG("LR is %lx %s", (size_t)lr, getSymbol((uintptr_t)lr).data());
 
     for (auto address : getStackTrace(fp)) {
         if (not address) {
@@ -74,7 +74,7 @@ void logStackTrace() {
         auto symbolStrBuffer = getSymbol(address);
 
         if ((size_t)address > skyline::utils::g_MainTextAddr) {
-            LOG("%lx %s", (size_t)address - skyline::utils::g_MainTextAddr + TEXT_OFFSET, symbolStrBuffer.data());
+            LOG("%lx %s", (size_t)address, symbolStrBuffer.data());
         } else {
             LOG("main-%lx %s", skyline::utils::g_MainTextAddr - (size_t)address, symbolStrBuffer.data());
         }

@@ -5,7 +5,11 @@
 #include "skyline/logger/TcpLogger.hpp"
 #include "skyline/utils/ipc.hpp"
 #include "xenoblade/bf2.hpp"
+#include "xenoblade/speedrun.hpp"
 #include "xenoblade/bfsw.hpp"
+
+#define BF2 bf2
+#define BFSW bfsw
 
 // For handling exceptions
 char ALIGNA(0x1000) exception_handler_stack[0x4000];
@@ -84,10 +88,19 @@ void skyline_main() {
 
         // load plugins
         skyline::plugin::Manager::LoadPlugins();
-	    setup_bf2();
+#if GAME == BF2
+#ifdef SPEEDRUN
+	    setup_speedruns();
+#endif
+#endif
     }};
 
     taskQueue->push(new std::unique_ptr<skyline::utils::Task>(after_romfs_task));
+#if GAME == BF2
+    setup_bf2();
+#elif GAME == BFSW
+    setup_bfsw();
+#endif
 /**/
 
     // TODO: experiment more with NVN

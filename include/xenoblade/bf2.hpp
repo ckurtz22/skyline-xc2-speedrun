@@ -87,7 +87,7 @@ namespace gf {
 namespace tl {
     class TitleMain {
         public:
-        void returnTitle(gf::SAVESLOT);
+        static void returnTitle(gf::SAVESLOT);
     }; //class TitleMain
 
 } //namespace tl
