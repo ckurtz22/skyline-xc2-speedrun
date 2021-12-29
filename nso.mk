@@ -39,7 +39,15 @@ CFLAGS	:=	-g -Wall -ffunction-sections \
 CFLAGS	+=	$(INCLUDE) -D__SWITCH__
 
 ifneq ($(strip $(NOLOG)),)
-CFLAGS	+=	  "-DNOLOG"
+CFLAGS	+=	  "-DNOLOG" 
+endif
+
+ifneq ($(strip $(CODE_NAME)),)
+CFLAGS	+=	"-DGAME=$(CODE_NAME)"
+endif
+
+ifneq ($(strip $(SPEEDRUN)),)
+CFLAGS	+=	"-DSPEEDRUN=1"
 endif
 
 CXXFLAGS	:= $(CFLAGS) -fno-rtti -fomit-frame-pointer -fno-exceptions -fno-asynchronous-unwind-tables -fno-unwind-tables -enable-libstdcxx-allocator=new -fpermissive 
